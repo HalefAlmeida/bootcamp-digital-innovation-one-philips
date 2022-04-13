@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos - flex-basis</title>
+    <style>
+      .flex-container {
+        max-width: 500px;
+        border: 1px solid black;
+        display: flex;
+      }
+
+      .items {
+        background-color: coral;
+        color: blac;
+        text-align: center;
+        margin: 5px;
+      }
+
+      .bauto {
+        flex-basis: auto;
+      }
+
+      .bzero {
+        flex-basis: 0;
+      }
+
+      .bwidth {
+        flex-basis: 100px;
+      }
+
+      .fg-1 {
+        flex-grow: 1;
+      }
+      .fg-2 {
+        flex-grow: 2;
+      }
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>auto</h1>
+    <div class="flex-container">
+      <div class="items bauto fg-1">A</div>
+      <div class="items bauto fg-1">BBBBBB</div>
+      <div class="items bauto fg-1">C</div>
+      <div class="items bauto fg-2">DFFD</div>
+    </div>
+    <h1>0 (zero)</h1>
+    <div class="flex-container">
+      <div class="items bzero fg-1">A</div>
+      <div class="items bzero fg-1">BBBBBB</div>
+      <div class="items bzero fg-1">C</div>
+      <div class="items bzero fg-2">DFFD</div>
+    </div>
+    <h1>basis + width</h1>
+    <div class="flex-container flex-wrap">
+      <div class="items bwidth fg-2">A</div>
+      <div class="items bwidth fg-2 p">BBBBBB</div>
+      <div class="items bwidth fg-2">C</div>
+      <div class="items bwidth fg-2">
+        SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS<br />SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+      </div>
+      <div class="items bwidth fg-2">
+        SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS<br />SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+      </div>
+      <div class="items bwidth fg-2">
+        SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS<br />SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+      </div>
+      <div class="items bwidth fg-2">SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS</div>
+      <div class="items bwidth fg-2">SSSSSS</div>
+    </div>
+  </body>
+</html>
