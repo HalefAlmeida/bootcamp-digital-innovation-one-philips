@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fundamentos - Display Flex</title>
+    <style>
+      .flex {
+        max-width: 300px;
+        padding: 10px;
+        border: 2px solid black;
+        display: flex; /*Alinha em linha e com o tamanho maximo de seu conteúdo*/
+      }
+
+      .item {
+        background-color: aqua;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex">
+      <!-- Caso a quantidade de itens exceda o tamanho da div, os itens começarão a "vazar" -->
+      <div class="item">Item 1</div>
+      <div class="item">Item 2</div>
+      <div class="item">Item 3</div>
+    </div>
+  </body>
+</html>
