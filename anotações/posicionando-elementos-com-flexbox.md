@@ -180,3 +180,5 @@ Esta propriedade é um atalho ou abreviação de escrita para as propriedades: g
 - center: relativo ao centro de acordo com o eixo
 - stretch: ocupa todo o espaço relativo
 - baseline: utiliza a linha base da tipografia
+
+## Curso Finalizado
