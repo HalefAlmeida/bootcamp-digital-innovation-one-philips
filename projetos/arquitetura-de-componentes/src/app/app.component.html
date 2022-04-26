@@ -4,3 +4,12 @@
 <div class="binding-example">
   <my-binding-example></my-binding-example>
 </div>
+
+<h2>@Input / @Output Example</h2>
+<div class="input-output-example">
+  <my-input-output-example
+    name="Halef"
+    (upperName)="receiveUpperText($event)"
+  ></my-input-output-example>
+  <h3>Este é o retorno via @Output() do componente: {{ upperName }}</h3>
+</div>
