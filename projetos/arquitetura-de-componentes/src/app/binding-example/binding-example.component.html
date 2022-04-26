@@ -1,0 +1,17 @@
+<div class="container flex b-radius-30">
+  <div class="letreiro b-radius-15">
+    <marquee class="letreiro-text" direction="right">{{ letreiro }}</marquee>
+  </div>
+  <div class="input">
+    <input
+      type="text"
+      placeholder="O que deseja apresentar no letreiro?"
+      [(ngModel)]="text"
+    />
+  </div>
+  <div class="action">
+    <button value="Ajustar letreiro" class="b-radius-50" (click)="aplicar()">
+      <b>Aplicar</b>
+    </button>
+  </div>
+</div>
