@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="actions">
+    <button mat-raised-button color="primary">Novo usuário</button>
+  </div>
+  <div class="users-list">
+    <table class="users-table">
+      <tr class="table-header">
+        <th>Detalhes do usuário</th>
+        <th>Ações</th>
+      </tr>
+      <tr *ngFor="let user of users">
+        <td>
+          <div class="user-item flex">
+            <div class="user-item-photo">
+              <img src="{{ user.photoURL }}" />
+            </div>
+            <div class="user-item-details">
+              <p id="user-name">Halef Dorigan</p>
+              <div class="flex user-details-mail">
+                <mat-icon class="user-details-icon">email</mat-icon>
+                <p id="user-email">teste@email.com</p>
+              </div>
+              <div class="flex user-details-mail">
+                <mat-icon class="user-details-icon">contact_mail</mat-icon>
+                <p id="user-email">teste_profissional@email.com</p>
+              </div>
+              <p id="added-date">Adicionado em ...</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="user-item-actions flex">
+            <button mat-raised-button color="primary">Editar</button>
+            <button mat-raised-button color="warn">Excluir</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

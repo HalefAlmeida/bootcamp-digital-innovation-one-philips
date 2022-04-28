@@ -1,0 +1,63 @@
+.flex {
+  display: flex;
+}
+
+.actions button {
+  margin: 10px;
+}
+
+.users-table {
+  width: 100%;
+  margin-top: 50px;
+}
+.users-table .table-header {
+  background-color: ghostwhite;
+  border: 1px solid gainsboro;
+}
+
+.users-table .user-item {
+  margin-top: 10px;
+}
+
+.users-table .user-item .user-item-photo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+.users-table .user-item .user-item-details {
+  line-height: 7px;
+}
+.users-table .user-item .user-item-details #user-name {
+  font-size: 15px;
+  color: cornflowerblue;
+  font-weight: bold;
+}
+
+.users-table .user-item .user-item-details .user-details-mail {
+  align-items: center;
+}
+
+.users-table .user-item .user-item-details .user-details-icon {
+  font-size: 15px;
+}
+
+.users-table .user-item .user-item-details #user-email {
+  font-size: 12px;
+}
+
+.users-table .user-item .user-item-details #added-date {
+  font-size: 10px;
+  color: darkgray;
+}
+
+.users-table .user-item-actions {
+  justify-content: center;
+}
+
+.users-table .user-item-actions button {
+  width: 120px;
+  margin: 10px;
+}
