@@ -48,13 +48,17 @@
       </div>
       <div class="row my-4">
         <div class="form-group col-12 mt-4">
-          <button type="button" class="btn btn-outline-danger float-start">
+          <button
+            type="button"
+            class="btn btn-outline-danger float-start"
+            (click)="backPrevPage()"
+          >
             Cancelar
           </button>
           <button
             type="button"
             class="btn btn-outline-success float-end"
-            (click)="submit()"
+            (click)="saveUser()"
           >
             Enviar
           </button>

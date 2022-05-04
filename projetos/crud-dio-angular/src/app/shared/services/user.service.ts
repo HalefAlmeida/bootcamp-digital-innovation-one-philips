@@ -44,4 +44,12 @@ export class UserService {
   public delete(id: number): Observable<User> {
     return this.http.delete<User>(`${this.API_URL}/id/${id}`);
   }
+
+  public update(id: number, record: User): Observable<User> {
+    return this.http.put<User>(`${this.API_URL}/id/${id}`, record);
+  }
+
+  public readById(id: number): Observable<User[]> {
+    return this.http.get<User[]>(`${this.API_URL}/id/${id}`);
+  }
 }

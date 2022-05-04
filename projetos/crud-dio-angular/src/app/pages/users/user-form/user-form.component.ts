@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'dio-user-form',
@@ -11,13 +12,15 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class UserFormComponent implements OnInit {
   userForm: FormGroup;
-
+  userId: any;
   users: User[] = [];
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private actRoute: ActivatedRoute,
+    private location: Location
   ) {
     this.userForm = this.fb.group({
       id: 0,
@@ -29,7 +32,21 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.actRoute.paramMap.subscribe((params) => {
+      this.userId = params.get('id'); // Obtém
+    });
     this.getUsers();
+    if (this.userId !== null) {
+      this.userService.readById(this.userId).subscribe((result) => {
+        this.userForm.patchValue({
+          id: result[0].id,
+          nome: result[0].nome,
+          sobrenome: result[0].sobrenome,
+          idade: result[0].idade,
+          profissao: result[0].profissao,
+        }); // Atualiza o valor do formulário
+      });
+    }
   }
 
   /**
@@ -37,11 +54,32 @@ export class UserFormComponent implements OnInit {
    */
   getUsers() {
     this.userService.readAll().subscribe((data) => {
-      data.map((user) => this.users.push(user));
+      this.users = data;
     });
   }
 
-  submit() {
+  saveUser() {
+    if (this.userId !== null) {
+      this.updateUser();
+    }
+    this.createuser();
+  }
+
+  updateUser() {
+    this.userService.update(this.userId, this.userForm.value).subscribe(
+      (data) => {
+        console.log(`Usuário alterado com sucesso!`);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        this.router.navigate(['/']); //Navega para a rota principal
+      }
+    );
+  }
+
+  createuser() {
     // Atribui um valor ao ID do registro a ser salvo, a partir da contagem de índices
     this.userForm.get('id')?.patchValue(this.users.length + 1); //ISSO NÃO RESPEITA OS PRINCÍPIOS DE INTEGRIDADE DE UM BANCO DE DADOS - APENAS DIDÁTICO
 
@@ -50,7 +88,10 @@ export class UserFormComponent implements OnInit {
         `Usuário ${result.nome} ${result.sobrenome}, foi cadastrado com sucesso!`
       );
     });
-    this.userForm.reset(); //Limpa o formulário
-    this.router.navigateByUrl('/'); //Navega para a rota principal
+    this.router.navigate(['/']); //Navega para a rota principal
+  }
+
+  backPrevPage() {
+    this.location.back();
   }
 }
