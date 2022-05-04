@@ -21,7 +21,21 @@ export class UsersListComponent implements OnInit {
    */
   getUsers() {
     this.userService.readAll().subscribe((data) => {
-      data.map((user) => this.users.push(user));
+      this.users = data;
     });
+  }
+
+  deleteUser(user: User) {
+    this.userService.delete(user.id).subscribe(
+      (response) => {
+        console.log('Usuário excluído!');
+      },
+      (err) => {
+        console.log(`ERRO AO EXECUTAR${err}`);
+      },
+      () => {
+        this.getUsers();
+      }
+    );
   }
 }
